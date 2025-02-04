@@ -15,11 +15,19 @@ const router = require('./routes/feed')
      res.setHeader('Access-Control-Allow-Methods','GET, POST, PUT, DELETE')
      res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization')
      next();
-
    })
 */
 
 
+const sequelize = require('./utils/database') //import the sequelize model
+
+
 app.use('/feed', router)
+
+sequelize.m2.sync().then(result=>{ //initialize the sequelize model
+   //console.log(result);
+}).catch(err=>{
+  console.log(err)
+});// This creates the model aka the table in memory..and 'sync' it with the database.
 
 app.listen(3000)
