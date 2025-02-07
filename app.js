@@ -21,13 +21,17 @@ const router = require('./routes/feed')
 
 const sequelize = require('./utils/database') //import the sequelize model
 
-
 app.use('/feed', router)
 
 sequelize.m2.sync().then(result=>{ //initialize the sequelize model
-   //console.log(result);
+   // console.log(result);
 }).catch(err=>{
   console.log(err)
 });// This creates the model aka the table in memory..and 'sync' it with the database.
 
-app.listen(3000)
+const mongoConnection = require('./utils/mongoDB')
+
+mongoConnection.m1((client)=>{
+  //console.log(client);
+})
+app.listen(3000) 
