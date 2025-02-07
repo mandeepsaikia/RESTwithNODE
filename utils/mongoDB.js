@@ -3,7 +3,7 @@ const _MongoClient = mongodb.MongoClient;
 
 let _db; //store db connection object
 const mongo_connection = (callback) =>{
-   _MongoClient.connect('mongodb+srv://test2:Ankita0802@cluster0.qj6d3.mongodb.net/').then((result)=>{ //'result' here is the mongo 'client' object
+   _MongoClient.connect('mongodb+srv://test2:xxxx@cluster0.qj6d3.mongodb.net/').then((result)=>{ //'result' here is the mongo 'client' object
    //callback(result);
    _db = result.db('sample_mflix'); //Extract connection pool from mongo client
    console.log('MongoDB connect successful...');
