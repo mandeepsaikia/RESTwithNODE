@@ -20,4 +20,7 @@ router.get('/updatequerysequelize/:id', _seqlData.UpdateDataController_sequelize
 
 router.get('/createresourcemongo', _mongoData.postDataMongo_sequelize)
 
+router.get('/getFileData', _feed.getFileController)
+router.post('/putFileData', _feed.postFileController)
+
 module.exports= router;
