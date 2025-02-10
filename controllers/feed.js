@@ -15,6 +15,7 @@ exports.postController = (req, res, next)=>{
     // We will create resource in database
     const _title = toString(title)
     const _content = toString(content)
+    console.log('Parsed post contents: ')
     res.status(201).json({message : 'Resource created successfully !', post :[title, content]})
 }
 
