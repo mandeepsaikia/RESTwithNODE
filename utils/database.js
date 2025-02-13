@@ -11,7 +11,7 @@ const pool = mysql.createPool({
 
 const {Sequelize} = require('sequelize')
 
-const sequelize = new Sequelize('sys', 'root', 'xxxx', {
+const sequelize = new Sequelize('sys', 'root', 'xxxx', { //Connection details
     dialect: 'mysql',
     host: 'localhost'
 });

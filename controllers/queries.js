@@ -1,17 +1,36 @@
 const pool = require('../utils/database')
-
+/*
 exports.getDataController = (req, res, next)=>{
     console.log('Hitting generic controller..');
     const d1 = req.query.d1;
     const d2 = req.query.d2;
     console.log('Dummpy params d1:' + d1  + " and d2:" + d2 );
-   pool.m1.execute('select * from products').then((results)=>{
+    pool.m1.execute('select * from products').then((results)=>{
     console.log(results)
     res.redirect('/feed/get')
    }).catch((err)=>{
     console.log(err)
    })
 };
+*/
+exports.getDataController = async (req, res, next)=>{
+    console.log('Hitting generic controller..with async code');
+    const d1 = req.query.d1;
+    const d2 = req.query.d2;
+    console.log('Dummpy params d1:' + d1  + " and d2:" + d2 );
+    const results = await pool.m1.execute('select * from products');
+    console.log(results);
+    res.redirect('/feed/get');
+    /*
+    .then((results)=>{
+    console.log(results)
+    res.redirect('/feed/get')
+   }).catch((err)=>{
+    console.log(err)
+   })
+   */
+};
+
 
 exports.postDataController = (req, res, next)=>{
    console.log('Hitting put controller..');

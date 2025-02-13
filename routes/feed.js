@@ -8,7 +8,7 @@ const _seqlData = require('../controllers/sequelize_queries')
 const _mongoData = require('../controllers/queries_mongo')
 
 router.get('/get', _feed.getController)
-router.post('/create', _feed.postController)
+router.post('/create', _feed.postController) //Use Postman
 router.get('/getquery',_data.getDataController)
 router.get('/putquery', _data.postDataController)
 router.get('/getidquery/:product_id', _data.getDataByIDController)

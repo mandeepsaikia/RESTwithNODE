@@ -25,6 +25,14 @@ const router = require('./routes/feed')
 app.use(session({secret: 'mysecret', resave: false, saveUninitialized: false}));
 const sequelize = require('./utils/database') //import the sequelize model
 
+app.use((req, res, next)=>{
+  console.log('Always Middleware!')
+  res.setHeader('Access-Control-Allow-Origin', '*'); //Set CORS domains - * ,means allow domnains
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, DELETE'); // Set ALL http methods
+  res.setHeader('Access-Control-Allow-Headers', '*'); //What Headers can be set
+  next()
+});
+
 app.use('/feed', router)
 
 /*
@@ -40,4 +48,4 @@ mongoConnection.m1((client)=>{
   //console.log(client);
 })
 */
-app.listen(3000) 
+app.listen(8080) 

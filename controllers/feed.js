@@ -1,15 +1,31 @@
 const { timeLog } = require("console");
 
+/*
 
+Some notes on CORS error (Cross Origin Resource sharing)
+1.) Say frontend and backend run on same domain (say client = localhost:3000 and server = localhost:3000), both run in same 'domain..then no issues in communication.
+2.) If both in diff domains, then CORS issue.
+3.) This is a default defense mechanism in browsers to not accept responses from diff domains
+
+
+*/
 exports.getController = (req, res, next)=>{
    // const cookies = req.get('Cookie');
    // console.log('Cookies sent :' + cookies);
     const session_cookie = req.session.key1;
     console.log('Session cookies : '+ session_cookie);
-    res.status(200).json({'key1':'val1', 'key2':'val2', post:['k1','k2','k3']})
+    res.status(200).json({posts:[{
+        _id:'1',
+        title: 'First Post',
+        content: 'This is my first content',
+        creator:{
+            name: 'Mandeep'
+        },
+        createdAt: new Date()
+      }]})
 }
 
-exports.postController = (req, res, next)=>{
+exports.postController = (req, res, next)=>{ 
     const title = req.body.title;
     const content = req.body.content; //title, content are two attributes sent to post method
     // We will create resource in database
